@@ -10,7 +10,17 @@ const PlacesListScreen = props => {
 
   const places = useSelector(state => state.places.places)
 
+  if (places.length === 0) {
+    return (
+      <View style={styles.noPlaces}>
+        <Text>Click '+' icon to start adding new places!</Text>
+      </View>
+    )
+  }
+
   return (
+
+
     <FlatList
       data={places}
       keyExtractor={item => item.id}
@@ -48,7 +58,11 @@ PlacesListScreen.navigationOptions = (navData) => {
 }
 
 const styles = StyleSheet.create({
-
+  noPlaces: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
 })
 
 export default PlacesListScreen
