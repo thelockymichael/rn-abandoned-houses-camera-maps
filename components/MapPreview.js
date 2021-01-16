@@ -3,6 +3,7 @@ import React from 'react'
 import ENV from "../env"
 
 import {
+  TouchableOpacity,
   View,
   Image,
   StyleSheet
@@ -24,7 +25,8 @@ const MapPreview = props => {
       },${props.location.lng}&key=${apiKey}`
   }
 
-  return <View
+  return <TouchableOpacity
+    onPress={props.onPress}
     style={{
       ...styles.mapPreview,
       ...props.style
@@ -36,7 +38,7 @@ const MapPreview = props => {
       /> :
       props.children
     }
-  </View>
+  </TouchableOpacity>
 }
 
 
