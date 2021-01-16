@@ -2,6 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/reactnative
 # Edit at https://www.toptal.com/developers/gitignore?templates=reactnative
 
+
+### Hide Environment file###
+env.js
+
 ### ReactNative ###
 # React Native Stack Base
 
