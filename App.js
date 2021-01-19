@@ -13,6 +13,8 @@ import PlacesNavigator from './navigation/PlacesNavigator'
 import placesReducer from './store/places-reducer'
 import {init} from './helpers/db'
 
+
+
 init()
   .then(() => {
     console.log('Initialized database.');

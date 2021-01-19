@@ -17,16 +17,23 @@ import MapView, {Marker} from "react-native-maps"
 import Colors from '../constants/Colors'
 
 const MapScreen = props => {
-  const [selectedLocation, setSelectedLocation] = useState()
+  const initialLocation = props.navigation.getParam('initialLocation')
+  const readOnly = props.navigation.getParam('readonly')
+
+  const [selectedLocation, setSelectedLocation] = useState(initialLocation)
 
   const mapRegion = {
-    latitude: 37.78,
-    longitude: -122.43,
+    latitude: initialLocation ? initialLocation.lat : 60.25,
+    longitude: initialLocation ? initialLocation.lng : 24.83,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421
   }
 
   const selectLocationHandler = event => {
+    if (readOnly) {
+      return
+    }
+
     setSelectedLocation({
       lat: event.nativeEvent.coordinate.latitude,
       lng: event.nativeEvent.coordinate.longitude
@@ -79,6 +86,11 @@ const MapScreen = props => {
 
 MapScreen.navigationOptions = navData => {
   const saveFn = navData.navigation.getParam('saveLocation')
+  const readOnly = navData.navigation.getParam('readonly')
+
+  if (readOnly) {
+    return {}
+  }
 
   return {
     headerRight: () =>

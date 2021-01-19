@@ -7,6 +7,9 @@ import HeaderButton from "../components/HeaderButton"
 import PlaceItem from "../components/PlaceItem"
 import * as placesActions from '../store/places-actions'
 
+import {insertPlace, fetchPlaces} from '../helpers/db'
+
+
 const PlacesListScreen = props => {
 
   const places = useSelector(state => state.places.places)
@@ -24,6 +27,8 @@ const PlacesListScreen = props => {
     )
   }
 
+
+  console.log(places[0]);
   return (
     <FlatList
       data={places}
@@ -32,7 +37,7 @@ const PlacesListScreen = props => {
         <PlaceItem
           image={itemData.item.imageUri}
           title={itemData.item.title}
-          address={null}
+          address={itemData.item.address}
           onSelect={() => {
             props.navigation.navigate('PlaceDetail', {
               placeTitle: itemData.item.title,
