@@ -32,6 +32,7 @@ const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(Redux
 const App = () => {
   return (
     <Provider store={store}>
+      <StatusBar style="light" />
       <PlacesNavigator />
     </Provider>
   );
